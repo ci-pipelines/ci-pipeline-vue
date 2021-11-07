@@ -1,3 +1,10 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "Stage",
+});
+</script>
+
 <script setup lang="ts">
 import StageStep from "./StageStep.vue";
 import AddStepIconButton from "./buttons/AddStepIconButton.vue";

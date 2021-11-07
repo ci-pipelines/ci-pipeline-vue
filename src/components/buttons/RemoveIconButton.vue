@@ -1,3 +1,10 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "RemoveIconButton",
+});
+</script>
+
 <template>
   <div>
     <div class="stage-icon">
