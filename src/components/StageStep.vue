@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<StageStepProps>(), {
         <StageStepIcon />
         <div class="step-label">{{ props.value.name }}</div>
         <div style="display: flex; align-items: center">
-          <RemoveIconButton @click="$emit('onDeleteStepClick')" />
+          <RemoveIconButton @click="$emit('delete-step')" />
         </div>
       </div>
     </div>

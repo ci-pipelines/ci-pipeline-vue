@@ -44,8 +44,8 @@ const deleteSequnceClick = (sequnce: number) => {
       <StageGroup
         :value="group"
         :sequnce="index"
-        @onAddSequnceClick="addSequnceClick"
-        @onDeleteSequnceClick="deleteSequnceClick"
+        @add-sequnce="addSequnceClick"
+        @delete-sequnce="deleteSequnceClick"
       />
       <AddStageIconButton @click="addSequnceClick(index + 1)" />
     </div>
@@ -53,8 +53,8 @@ const deleteSequnceClick = (sequnce: number) => {
     <StageGroup
       :sequnce="props.value.groups.length"
       mode="last"
-      @onAddSequnceClick="addSequnceClick"
-      @onDeleteSequnceClick="deleteSequnceClick"
+      @add-sequnce="addSequnceClick"
+      @delete-sequnce="deleteSequnceClick"
     />
 
     <StageGroup mode="end" :value="props.value.post" />

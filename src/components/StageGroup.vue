@@ -20,11 +20,11 @@ const onAddParallelClick = () => {
   });
 };
 
-const emit = defineEmits(["onDeleteSequnceClick", "onAddSequnceClick"]);
+const emit = defineEmits(["delete-sequnce", "add-sequnce"]);
 
 const onDeleteStageClick = (index: number) => {
   if (props.value?.stages.length == 1) {
-    emit("onDeleteSequnceClick", props.sequnce);
+    emit("delete-sequnce", props.sequnce);
   } else {
     props.value?.stages.splice(index, 1);
   }
@@ -48,7 +48,7 @@ const onDeleteStageClick = (index: number) => {
         :mode="props.mode"
         :sequnce="props.sequnce"
         :parallel="index"
-        @onDeleteStageClick="onDeleteStageClick(index)"
+        @delete-stage="onDeleteStageClick(index)"
       />
       <div class="add-parallel-stage-box" @click="onAddParallelClick">
         + 增加并行阶段
@@ -71,7 +71,7 @@ const onDeleteStageClick = (index: number) => {
     <div
       v-if="props.mode === 'last'"
       class="stage-group-rb last"
-      @click="$emit('onAddSequnceClick', props.sequnce)"
+      @click="$emit('add-sequnce', props.sequnce)"
     >
       <div class="add-sequence-stage-box">+ 增加阶段</div>
     </div>

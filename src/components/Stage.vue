@@ -98,7 +98,7 @@ const onDeleteStepClick = (index: number) => {
             v-if="props.mode !== 'end' && props.mode !== 'start'"
           >
             <div>
-              <div class="stage-icon" @click="$emit('onDeleteStageClick')">
+              <div class="stage-icon" @click="$emit('delete-stage')">
                 <svg
                   fill="currentColor"
                   preserveAspectRatio="xMidYMid meet"
@@ -125,7 +125,7 @@ const onDeleteStepClick = (index: number) => {
             :last="index === (props.value!.steps!.length - 1)"
             :sequnce="props.sequnce!"
             :parallel="props.parallel!"
-            @onDeleteStepClick="onDeleteStepClick(index)"
+            @delete-step="onDeleteStepClick(index)"
           />
         </div>
       </div>
