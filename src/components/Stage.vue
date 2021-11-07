@@ -1,29 +1,32 @@
 <script setup lang="ts">
-import StageStep from './StageStep.vue';
-import AddStepIconButton from './buttons/AddStepIconButton.vue';
-import { PipelineStageData } from './models';
+import StageStep from "./StageStep.vue";
+import AddStepIconButton from "./buttons/AddStepIconButton.vue";
+import { PipelineStageData } from "./models";
 
-export type Mode = 'start' | 'normal' | 'last' | 'end';
+export type Mode = "start" | "normal" | "last" | "end";
 
 export interface StageProps {
   sequnce?: number;
   parallel?: number;
-  mode: Mode;
+  mode?: Mode;
   value?: PipelineStageData;
-  last: boolean;
+  last?: boolean;
 }
 
 const props = withDefaults(defineProps<StageProps>(), {
-  mode: 'normal',
-  last: false
+  sequnce: undefined,
+  parallel: undefined,
+  mode: "normal",
+  value: undefined,
+  last: false,
 });
 
 const onAddStepClick = () => {
   props.value?.steps.push({
-    name: '执行shell脚本',
-    description: '',
-    type: 'shell',
-    script: 'echo "hello world"'
+    name: "执行shell脚本",
+    description: "",
+    type: "shell",
+    script: 'echo "hello world"',
   });
 };
 
@@ -38,7 +41,7 @@ const onDeleteStepClick = (index: number) => {
     :class="{
       'first-stage': props.mode === 'start',
       last: props.last,
-      end: props.mode === 'end'
+      end: props.mode === 'end',
     }"
   >
     <div role="button" :class="{ 'stage-arrow-box': props.mode !== 'start' }">
@@ -78,10 +81,16 @@ const onDeleteStepClick = (index: number) => {
               </g>
             </svg>
           </div>
-          <div v-else class="stage-index">{{ props.sequnce! + 1 }}-{{ props.parallel! + 1 }}</div>
+          <div v-else class="stage-index">
+            {{ props.sequnce! + 1 }}-{{ props.parallel! + 1 }}
+          </div>
           <div class="stage-name">
             {{
-              props.mode === 'end' ? '结束' : props.mode === 'start' ? '开始' : props.value?.name
+              props.mode === "end"
+                ? "结束"
+                : props.mode === "start"
+                ? "开始"
+                : props.value?.name
             }}
           </div>
           <div
@@ -128,13 +137,13 @@ const onDeleteStepClick = (index: number) => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .stage-container {
   position: relative;
 }
 
 .stage-container:not(.end):before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -183,7 +192,7 @@ const onDeleteStepClick = (index: number) => {
   overflow: hidden;
 }
 .stage-arrow-box:before {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-top: 5px solid transparent;

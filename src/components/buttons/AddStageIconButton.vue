@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
 .add-sequence-stage {
   position: relative;
   color: #3385ff;

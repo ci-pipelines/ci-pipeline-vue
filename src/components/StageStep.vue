@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import RemoveIconButton from './buttons/RemoveIconButton.vue';
-import { PipelineStageStepData } from './models';
-import StageStepIcon from './StageStepIcon.vue';
+import RemoveIconButton from "./buttons/RemoveIconButton.vue";
+import { PipelineStageStepData } from "./models";
+import StageStepIcon from "./StageStepIcon.vue";
 
 export interface StageStepProps {
   last: boolean;
-  value: PipelineStageStepData;
+  value?: PipelineStageStepData;
   sequnce: number;
   parallel: number;
 }
 
 const props = withDefaults(defineProps<StageStepProps>(), {
-  last: false
+  last: false,
+  value: undefined,
+  sequnce: -1,
+  parallel: -1,
 });
-
-const count = ref(0);
 </script>
 
 <template>
@@ -32,7 +32,7 @@ const count = ref(0);
   </div>
 </template>
 
-<style scoped>
+<style>
 .step-box {
   border-radius: 2px;
   margin: 10px 45px;
@@ -60,7 +60,7 @@ const count = ref(0);
   position: relative;
 }
 .step-wrapper:after {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   position: absolute;
@@ -73,7 +73,7 @@ const count = ref(0);
 }
 
 .step-wrapper:before {
-  content: '';
+  content: "";
   width: 1px;
   height: 10px;
   background: #dadfe6;

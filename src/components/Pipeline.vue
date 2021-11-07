@@ -1,14 +1,14 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: 'Pipeline'
+  name: "Pipeline",
 });
 </script>
 
 <script setup lang="ts">
-import StageGroup from './StageGroup.vue';
-import AddStageIconButton from './buttons/AddStageIconButton.vue';
-import { PipelineData } from './models';
+import StageGroup from "./StageGroup.vue";
+import AddStageIconButton from "./buttons/AddStageIconButton.vue";
+import { PipelineData } from "./models";
 
 export interface PipelineProps {
   value: PipelineData;
@@ -16,21 +16,21 @@ export interface PipelineProps {
 
 const props = withDefaults(defineProps<PipelineProps>(), {});
 
-const onAddSequnceClick = (sequnce: number) => {
+const addSequnceClick = (sequnce: number) => {
   props.value.groups.splice(sequnce, 0, {
     name: `Group ${sequnce}`,
-    description: '',
+    description: "",
     stages: [
       {
         name: `Stage ${sequnce}`,
-        description: '',
-        steps: []
-      }
-    ]
+        description: "",
+        steps: [],
+      },
+    ],
   });
 };
 
-const onDeleteSequnceClick = (sequnce: number) => {
+const deleteSequnceClick = (sequnce: number) => {
   props.value.groups.splice(sequnce, 1);
 };
 </script>
@@ -38,30 +38,30 @@ const onDeleteSequnceClick = (sequnce: number) => {
 <template>
   <div class="ci-pipeline">
     <StageGroup mode="start" />
-    <AddStageIconButton @click="onAddSequnceClick(0)" />
+    <AddStageIconButton @click="addSequnceClick(0)" />
 
     <div class="stage-with-add" v-for="(group, index) in value.groups">
       <StageGroup
         :value="group"
         :sequnce="index"
-        @onAddSequnceClick="onAddSequnceClick"
-        @onDeleteSequnceClick="onDeleteSequnceClick"
+        @onAddSequnceClick="addSequnceClick"
+        @onDeleteSequnceClick="deleteSequnceClick"
       />
-      <AddStageIconButton @click="onAddSequnceClick(index + 1)" />
+      <AddStageIconButton @click="addSequnceClick(index + 1)" />
     </div>
 
     <StageGroup
       :sequnce="props.value.groups.length"
       mode="last"
-      @onAddSequnceClick="onAddSequnceClick"
-      @onDeleteSequnceClick="onDeleteSequnceClick"
+      @onAddSequnceClick="addSequnceClick"
+      @onDeleteSequnceClick="deleteSequnceClick"
     />
 
     <StageGroup mode="end" :value="props.value.post" />
   </div>
 </template>
 
-<style scoped>
+<style>
 .ci-pipeline {
   position: relative;
   display: -ms-flexbox;
@@ -72,7 +72,8 @@ const onDeleteSequnceClick = (sequnce: number) => {
   align-items: flex-start;
   color: #202d40;
   font-size: 14px;
-  font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Segoe UI, Microsoft YaHei, sans-serif;
+  font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Segoe UI,
+    Microsoft YaHei, sans-serif;
   flex: 1;
   width: 100%;
 }

@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { PipelineGroupData } from './models';
-import Stage, { Mode } from './Stage.vue';
+import { PipelineGroupData } from "./models";
+import Stage, { Mode } from "./Stage.vue";
 
 export interface StageGroupProps {
   sequnce?: number;
-  mode: Mode;
+  mode?: Mode;
   value?: PipelineGroupData;
 }
 
 const props = withDefaults(defineProps<StageGroupProps>(), {
-  mode: 'normal'
+  mode: "normal",
 });
 
 const onAddParallelClick = () => {
   props.value?.stages.push({
-    name: '测试阶段。。',
-    description: '',
-    steps: []
+    name: "测试阶段。。",
+    description: "",
+    steps: [],
   });
 };
 
-const emit = defineEmits(['onDeleteSequnceClick', 'onAddSequnceClick']);
+const emit = defineEmits(["onDeleteSequnceClick", "onAddSequnceClick"]);
 
 const onDeleteStageClick = (index: number) => {
   if (props.value?.stages.length == 1) {
-    emit('onDeleteSequnceClick', props.sequnce);
+    emit("onDeleteSequnceClick", props.sequnce);
   } else {
     props.value?.stages.splice(index, 1);
   }
@@ -37,7 +37,7 @@ const onDeleteStageClick = (index: number) => {
     :class="{
       first: props.mode === 'start',
       last: props.mode === 'end',
-      end: props.mode === 'end'
+      end: props.mode === 'end',
     }"
   >
     <div v-if="props.mode === 'normal'" class="stage-group-rb">
@@ -50,9 +50,15 @@ const onDeleteStageClick = (index: number) => {
         :parallel="index"
         @onDeleteStageClick="onDeleteStageClick(index)"
       />
-      <div class="add-parallel-stage-box" @click="onAddParallelClick">+ 增加并行阶段</div>
+      <div class="add-parallel-stage-box" @click="onAddParallelClick">
+        + 增加并行阶段
+      </div>
     </div>
-    <div v-if="props.mode === 'end'" class="stage-group-rb" :class="{ end: props.mode === 'end' }">
+    <div
+      v-if="props.mode === 'end'"
+      class="stage-group-rb"
+      :class="{ end: props.mode === 'end' }"
+    >
       <Stage mode="end" :value="props.value?.stages[0]" />
     </div>
     <div
@@ -72,7 +78,7 @@ const onDeleteStageClick = (index: number) => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .stage-group-rb {
   display: -ms-flexbox;
   display: flex;
@@ -84,7 +90,7 @@ const onDeleteStageClick = (index: number) => {
 }
 
 .stage-group-rb:not(.first):before {
-  content: '';
+  content: "";
   height: 1px;
   width: 45px;
   background: #3385ff;
@@ -94,7 +100,7 @@ const onDeleteStageClick = (index: number) => {
 }
 
 .stage-group-rb:not(.last):not(.end):after {
-  content: '';
+  content: "";
   height: 1px;
   width: 45px;
   background: #3385ff;
@@ -140,7 +146,7 @@ const onDeleteStageClick = (index: number) => {
   cursor: pointer;
 }
 .add-parallel-stage-box:before {
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-top: 5px solid transparent;

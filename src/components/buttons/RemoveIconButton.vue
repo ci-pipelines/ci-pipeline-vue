@@ -1,17 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue';
-
-interface Props {
-  last: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  last: false
-});
-
-const count = ref(0);
-</script>
-
 <template>
   <div>
     <div class="stage-icon">
@@ -34,7 +20,7 @@ const count = ref(0);
   </div>
 </template>
 
-<style scoped>
+<style>
 .stage-icon {
   padding-right: 10px;
   display: none;

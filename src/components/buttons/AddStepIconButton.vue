@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
 .add-step {
   top: -20px;
   left: 130px;
