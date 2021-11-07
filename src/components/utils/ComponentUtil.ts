@@ -1,8 +1,8 @@
-import { App, Plugin } from 'vue';
+import { App, Plugin } from 'vue-demi'
 
 const withInstall = <T>(comp: T): T & Plugin => {
   const c = comp as any;
-  c.install = function(app: App) {
+  c.install = function (app: App) {
     app.component(c.name, comp);
   };
 

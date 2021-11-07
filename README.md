@@ -1,6 +1,8 @@
 # ci-pipeline-vue
 
-仿照coding.net的ci pipeline的vue组件。
+仿照coding.net的ci pipeline的vue3组件。
+
+暂时不支持vue2，等待兼容方案。
 
 ## Recommended IDE Setup
 

@@ -1,7 +1,14 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from "vue-demi";
 export default defineComponent({
   name: "Pipeline",
+  setup() {
+    return () =>
+      `<div>
+        <h1>Pipeline</h1>
+        </div>
+  `;
+  },
 });
 </script>
 

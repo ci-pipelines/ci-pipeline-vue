@@ -1,12 +1,11 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import { ref } from "vue-demi";
-import { PipelineData } from "./components/models";
-import Pipeline from "./components/Pipeline.vue";
-import PipelineContainer from "./components/PipelineContainer.vue";
+<template>
+  <Pipeline :value="pipelineData" />
+</template>
 
-const pipelineData = ref<PipelineData>({
+<script lang="ts" setup>
+import { ref } from "vue";
+
+const pipelineData = ref({
   name: "测试样例",
   description: "",
   groups: [
@@ -74,10 +73,21 @@ const pipelineData = ref<PipelineData>({
 });
 </script>
 
-<template>
-  <PipelineContainer>
-    <Pipeline :value="pipelineData" />
-  </PipelineContainer>
-</template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import Pipeline from "ci-pipeline-vue";
 
-<style></style>
+export default defineComponent({
+  name: "App",
+  components: {
+    Pipeline,
+  },
+});
+</script>
+
+<style>
+#app {
+  width: 100%;
+  height: 100%;
+}
+</style>
