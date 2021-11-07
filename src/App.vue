@@ -4,6 +4,7 @@
 import { ref } from "vue";
 import { PipelineData } from "./components/models";
 import Pipeline from "./components/Pipeline.vue";
+import PipelineContainer from "./components/PipelineContainer.vue";
 
 const pipelineData = ref<PipelineData>({
   name: "测试样例",
@@ -74,7 +75,9 @@ const pipelineData = ref<PipelineData>({
 </script>
 
 <template>
-  <Pipeline :value="pipelineData" />
+  <PipelineContainer>
+    <Pipeline :value="pipelineData" />
+  </PipelineContainer>
 </template>
 
 <style></style>
