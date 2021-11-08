@@ -1,0 +1,40 @@
+.stage-group-rb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-animation: change-background-1RSfRAHzBv 1s ease-in-out;
+    animation: change-background-1RSfRAHzBv 1s ease-in-out;
+    position: relative;
+  }
+  
+  .stage-group-rb:not(.first):before {
+    content: "";
+    height: 1px;
+    width: 45px;
+    background: #3385ff;
+    position: absolute;
+    left: 0;
+    top: 30px;
+  }
+  
+  .stage-group-rb:not(.last):not(.end):after {
+    content: "";
+    height: 1px;
+    width: 45px;
+    background: #3385ff;
+    position: absolute;
+    right: 0;
+    top: 30px;
+  }
+  
+  .stage-group-rb.end:before {
+    width: 90px;
+    left: -50px;
+  }
+  
+  .stage-group-box {
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+  }

@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 import typescript from '@rollup/plugin-typescript'
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 const resolvePath = (str: string) => path.resolve(__dirname, str)
 
@@ -29,6 +30,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    vueJsx(),
     typescript({
       'target': 'es2020',
       'rootDir': resolvePath('./src'),

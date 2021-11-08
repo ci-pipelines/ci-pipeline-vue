@@ -1,0 +1,113 @@
+.stage-container {
+    position: relative;
+  }
+  
+  .stage-container:not(.end):before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+    border: 1px solid #3385ff;
+    border-top-color: transparent;
+  }
+  
+  .stage-container.last:before {
+    border-color: #dadfe6;
+    border-style: dashed;
+    border-top: transparent;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .stage-container.first-stage:before {
+    border-color: transparent;
+  }
+  
+  .stage-box {
+    border-radius: 2px;
+    margin: 10px 45px;
+    width: 200px;
+    height: 40px;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #dadfe6;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+  }
+  
+  .stage-box:hover {
+    border-color: #3385ff;
+  }
+  .stage-arrow-box {
+    overflow: hidden;
+  }
+  .stage-arrow-box:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    left: 41px;
+    top: 25px;
+    border-left: 5px solid #3385ff;
+  }
+  .stage-wrapper {
+    margin: 10px 45px;
+  }
+  
+  .stage-box {
+    font-weight: 700;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .stage-box .stage-index {
+    height: 100%;
+    width: 40px;
+    background: #3385ff;
+    color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 2px 0 0 2px;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  
+  .stage-box .stage-name {
+    -ms-flex: 1 1;
+    flex: 1 1;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
+  .stage-box .stage-icon {
+    padding-right: 10px;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .stage-box:hover .stage-icon {
+    display: initial;
+  }
